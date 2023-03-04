@@ -3,7 +3,7 @@ jobs:
   oracle9:
     runs-on: ubuntu-latest
     env:
-      rpm: /home/runner/rpmbuild/RPMS/noarch/artipie-0.28.0-1.ol9.noarch.rpm
+      rpm: /home/runner/rpmbuild/RPMS/noarch/artipie-0.28.0-1.noarch.rpm
     steps:
       - uses: actions/checkout@v3
       - run: wget https://github.com/artipie/artipie/releases/download/v0.28.0/artipie-v0.28.0-jar-with-dependencies.jar -O artipie.jar
