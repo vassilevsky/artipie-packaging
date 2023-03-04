@@ -16,6 +16,9 @@ some with caching proxy ability,
 each running on its own path or port.
 
 %install
+groupadd --system artipie
+useradd --system -g artipie -d %{_var}/artipie -s /sbin/nologin artipie
+
 install                       -m 0444 -D artipie.jar         %{buildroot}/opt/artipie/artipie.jar
 install                       -m 0444 -D artipie.service     %{buildroot}%{_sysconfdir}/systemd/system/artipie.service
 install                       -m 0444 -D artipie.yml         %{buildroot}%{_sysconfdir}/artipie/artipie.yml
