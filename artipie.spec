@@ -16,16 +16,13 @@ some with caching proxy ability,
 each running on its own path or port.
 
 %install
-groupadd --system artipie
-useradd --system -g artipie -d %{_var}/artipie -s /sbin/nologin artipie
-
-install                       -m 0444 -D artipie.jar         %{buildroot}/opt/artipie/artipie.jar
-install                       -m 0444 -D artipie.service     %{buildroot}%{_sysconfdir}/systemd/system/artipie.service
-install                       -m 0444 -D artipie.yml         %{buildroot}%{_sysconfdir}/artipie/artipie.yml
-install                       -m 0444 -D credentials.yml     %{buildroot}%{_sysconfdir}/artipie/credentials.yml
-install                       -m 0444 -D readme-repos.txt    %{buildroot}%{_sysconfdir}/artipie/repos/readme.txt
-install -g artipie -o artipie -m 0444 -D readme-packages.txt %{buildroot}%{_var}/artipie/repos/readme.txt
-install -g artipie -o artipie -m 0444 -D readme-caches.txt   %{buildroot}%{_var}/cache/artipie/readme.txt
+install -m 0444 -D artipie.jar         %{buildroot}/opt/artipie/artipie.jar
+install -m 0444 -D artipie.service     %{buildroot}%{_sysconfdir}/systemd/system/artipie.service
+install -m 0444 -D artipie.yml         %{buildroot}%{_sysconfdir}/artipie/artipie.yml
+install -m 0444 -D credentials.yml     %{buildroot}%{_sysconfdir}/artipie/credentials.yml
+install -m 0444 -D readme-repos.txt    %{buildroot}%{_sysconfdir}/artipie/repos/readme.txt
+install -m 0444 -D readme-packages.txt %{buildroot}%{_var}/artipie/repos/readme.txt
+install -m 0444 -D readme-caches.txt   %{buildroot}%{_var}/cache/artipie/readme.txt
 
 %files
         /opt/artipie
@@ -40,6 +37,10 @@ install -g artipie -o artipie -m 0444 -D readme-caches.txt   %{buildroot}%{_var}
 getent group  artipie > /dev/null || groupadd --system artipie
 getent passwd artipie > /dev/null || useradd --system -g artipie -d %{_var}/artipie -s /sbin/nologin artipie
 exit 0
+
+%post
+chown --recursive artipie:artipie %{_var}/artipie
+chown --recursive artipie:artipie %{_var}/cache/artipie
 
 %changelog
 * Tue Jan 17 2023 Ilya Vassilevsky <vassilevsky@gmail.com> - 0.28.0-1
