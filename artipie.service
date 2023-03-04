@@ -6,7 +6,7 @@ After=syslog.target network.target
 SyslogIdentifier=artipie
 User=artipie
 Group=artipie
-ExecStart=/usr/bin/java -jar /opt/artipie/artipie.jar --config-file=/etc/artipie.yml --port=8080 --api-port=8081
+ExecStart=/usr/bin/java -jar /opt/artipie/artipie.jar --config-file=/etc/artipie/artipie.yml --port=8080 --api-port=8081
 WorkingDirectory=/var/artipie
 Restart=always
 
