@@ -31,6 +31,7 @@ install -m 0444 -D readme-caches.txt   %{buildroot}%{_var}/cache/artipie/readme.
 %config %{_sysconfdir}/artipie/credentials.yml
         %{_sysconfdir}/artipie
         %{_var}/artipie/repos
+        %{_var}/cache/artipie
 %ghost  %{_var}/cache/artipie
 
 %pre
