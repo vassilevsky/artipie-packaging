@@ -1,0 +1,20 @@
+on: push
+jobs:
+  oracle9:
+    runs-on: ubuntu-latest
+    env:
+      rpm: /github/home/rpmbuild/RPMS/noarch/artipie-0.28.0-1.ol9.noarch.rpm
+    steps:
+      - uses: actions/checkout@v3
+      - run: rpmlint artipie.spec
+      - run: wget https://github.com/artipie/artipie/releases/download/v0.28.0/artipie-v0.28.0-jar-with-dependencies.jar -O artipie.jar
+      - run: rpmbuild -bb --build-in-place artipie.spec
+      - run: rpm -qlp $rpm
+      - run: rpmlint $rpm
+      - uses: danielmundi/upload-packagecloud@v1
+        with:
+          packagecloud-token: ${{ secrets.PACKAGECLOUD_TOKEN }}
+          packagecloud-username: vassilevsky
+          packagecloud-repo: artipie
+          packagecloud-distrib: ol/8
+          package-name: artipie-0.28.0-1.ol9.noarch.rpm
