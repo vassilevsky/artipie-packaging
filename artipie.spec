@@ -1,6 +1,6 @@
 Name:      artipie
 Version:   0.28.0
-Release:   2
+Release:   3
 BuildArch: noarch
 Summary:   Package repository and cache server
 License:   MIT
