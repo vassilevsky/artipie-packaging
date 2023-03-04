@@ -25,13 +25,13 @@ install -g artipie -o artipie -m 0444 -D readme-packages.txt %{buildroot}%{_var}
 install -g artipie -o artipie -m 0444 -D readme-caches.txt   %{buildroot}%{_var}/cache/artipie/readme.txt
 
 %files
-/opt/artipie
-%{_sysconfdir}/systemd/system/artipie.service
+        /opt/artipie
+        %{_sysconfdir}/systemd/system/artipie.service
 %config %{_sysconfdir}/artipie/artipie.yml
 %config %{_sysconfdir}/artipie/credentials.yml
-%{_sysconfdir}/artipie
-%{_var}/artipie/repos
-%ghost %{_var}/cache/artipie
+        %{_sysconfdir}/artipie
+        %{_var}/artipie/repos
+%ghost  %{_var}/cache/artipie
 
 %pre
 getent group  artipie > /dev/null || groupadd --system artipie
