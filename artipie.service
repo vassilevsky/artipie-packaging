@@ -8,6 +8,7 @@ User=artipie
 Group=artipie
 ExecStart=/usr/bin/java -jar /opt/artipie/artipie.jar --config-file=/etc/artipie/artipie.yml --port=8080 --api-port=8081
 WorkingDirectory=/var/artipie
+StandardOutput=append:/var/log/artipie.log
 Restart=always
 
 [Install]

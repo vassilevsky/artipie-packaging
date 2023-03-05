@@ -32,6 +32,7 @@ install -m 0444 -D readme-caches.txt   %{buildroot}%{_var}/cache/artipie/readme.
         %{_sysconfdir}/artipie
         %{_var}/artipie/repos
         %{_var}/cache/artipie
+%ghost  %{_var}/log/artipie.log
 
 %pre
 getent group  artipie > /dev/null || groupadd --system artipie
