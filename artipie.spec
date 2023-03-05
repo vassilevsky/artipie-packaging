@@ -1,6 +1,6 @@
 Name:      artipie
 Version:   0.28.0
-Release:   3
+Release:   4
 BuildArch: noarch
 Summary:   Package repository and cache server
 License:   MIT
@@ -44,5 +44,5 @@ chown --recursive artipie:artipie %{_var}/artipie
 chown --recursive artipie:artipie %{_var}/cache/artipie
 
 %changelog
-* Tue Jan 17 2023 Ilya Vassilevsky <vassilevsky@gmail.com> - 0.28.0-1
+* Sun Mar 5 2023 Ilya Vassilevsky <vassilevsky@gmail.com> - 0.28.0-4
 - First version of artipie package

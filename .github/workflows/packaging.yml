@@ -12,4 +12,4 @@ jobs:
           packagecloud-username: vassilevsky
           packagecloud-repo: artipie
           packagecloud-distrib: ol/9
-          package-name: /home/runner/rpmbuild/RPMS/noarch/artipie-0.28.0-3.noarch.rpm
+          package-name: /home/runner/rpmbuild/RPMS/noarch/artipie-0.28.0-4.noarch.rpm
