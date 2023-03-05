@@ -4,8 +4,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: wget https://github.com/artipie/artipie/releases/download/v0.28.0/artipie-v0.28.0-jar-with-dependencies.jar -O artipie.jar
-      - run: rpmbuild -bb --build-in-place artipie.spec
+      - run: make
       - uses: danielmundi/upload-packagecloud@v1
         with:
           packagecloud-token: ${{ secrets.PACKAGECLOUD_TOKEN }}
