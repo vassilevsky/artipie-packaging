@@ -1,11 +1,7 @@
 meta:
   storage:
     type: fs
-    path: /etc/artipie
-  configs: repos
-  credentials:
-  - type: file
-    path: credentials.yml
+    path: /etc/artipie/repos.d
   metrics:
     port: 8082
     endpoint: /metrics

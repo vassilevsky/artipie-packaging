@@ -1,6 +1,6 @@
 Name:      artipie
 Version:   0.28.0
-Release:   6
+Release:   7
 BuildArch: noarch
 Summary:   Package repository and cache server
 License:   MIT
@@ -19,19 +19,18 @@ each running on its own path or port.
 install -m 0444 -D artipie.jar         %{buildroot}/opt/artipie/artipie.jar
 install -m 0444 -D artipie.service     %{buildroot}/usr/lib/systemd/system/artipie.service
 install -m 0444 -D artipie.yml         %{buildroot}%{_sysconfdir}/artipie/artipie.yml
-install -m 0444 -D credentials.yml     %{buildroot}%{_sysconfdir}/artipie/credentials.yml
-install -m 0444 -D readme-repos.txt    %{buildroot}%{_sysconfdir}/artipie/repos/readme.txt
-install -m 0444 -D readme-packages.txt %{buildroot}%{_var}/artipie/repos/readme.txt
-install -m 0444 -D readme-caches.txt   %{buildroot}%{_var}/cache/artipie/readme.txt
+
+mkdir -p %{buildroot}%{_sysconfdir}/artipie/repos.d
+mkdir -p %{buildroot}%{_var}/artipie
+mkdir -p %{buildroot}%{_var}/cache/artipie
 
 %files
         /opt/artipie
         /usr/lib/systemd/system/artipie.service
 %config %{_sysconfdir}/artipie/artipie.yml
-%config %{_sysconfdir}/artipie/credentials.yml
-        %{_sysconfdir}/artipie
-        %{_var}/artipie/repos
-        %{_var}/cache/artipie
+%dir    %{_sysconfdir}/artipie/repos.d
+%dir    %{_var}/artipie
+%dir    %{_var}/cache/artipie
 %ghost  %{_var}/log/artipie.log
 
 %pre
@@ -44,8 +43,9 @@ chown --recursive artipie:artipie %{_var}/artipie
 chown --recursive artipie:artipie %{_var}/cache/artipie
 
 %changelog
-* Sun Mar 12 2023 Ilya Vassilevsky <vassilevsky@gmail.com> - 0.28.0-6
+* Sun Mar 12 2023 Ilya Vassilevsky <vassilevsky@gmail.com> - 0.28.0-7
 - Moved SystemD unit file to /usr/lib
+- Removed unnecessary files
 
 * Sun Mar 5 2023 Ilya Vassilevsky <vassilevsky@gmail.com> - 0.28.0-4
 - First version of artipie package
