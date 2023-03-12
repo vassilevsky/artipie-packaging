@@ -5,10 +5,5 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: make
-      - uses: danielmundi/upload-packagecloud@v1
-        with:
-          packagecloud-token: ${{ secrets.PACKAGECLOUD_TOKEN }}
-          packagecloud-username: vassilevsky
-          packagecloud-repo: artipie
-          packagecloud-distrib: ol/9
-          package-name: /home/runner/rpmbuild/RPMS/noarch/artipie-0.28.0-5.noarch.rpm
+      - run: gem install package_cloud
+      - run: package_cloud push vassilevsky/artipie ~/rpmbuild/RPMS/noarch
