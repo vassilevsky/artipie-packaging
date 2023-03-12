@@ -5,5 +5,5 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: make
-      - run: gem install package_cloud
+      - run: sudo gem install package_cloud
       - run: package_cloud push vassilevsky/artipie ~/rpmbuild/RPMS/noarch
