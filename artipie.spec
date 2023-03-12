@@ -1,6 +1,6 @@
 Name:      artipie
 Version:   0.28.0
-Release:   5
+Release:   6
 BuildArch: noarch
 Summary:   Package repository and cache server
 License:   MIT
@@ -17,7 +17,7 @@ each running on its own path or port.
 
 %install
 install -m 0444 -D artipie.jar         %{buildroot}/opt/artipie/artipie.jar
-install -m 0444 -D artipie.service     %{buildroot}%{_libdir}/systemd/system/artipie.service
+install -m 0444 -D artipie.service     %{buildroot}%{_unitdir}/artipie.service
 install -m 0444 -D artipie.yml         %{buildroot}%{_sysconfdir}/artipie/artipie.yml
 install -m 0444 -D credentials.yml     %{buildroot}%{_sysconfdir}/artipie/credentials.yml
 install -m 0444 -D readme-repos.txt    %{buildroot}%{_sysconfdir}/artipie/repos/readme.txt
@@ -26,7 +26,7 @@ install -m 0444 -D readme-caches.txt   %{buildroot}%{_var}/cache/artipie/readme.
 
 %files
         /opt/artipie
-        %{_libdir}/systemd/system/artipie.service
+        %{_unitdir}/artipie.service
 %config %{_sysconfdir}/artipie/artipie.yml
 %config %{_sysconfdir}/artipie/credentials.yml
         %{_sysconfdir}/artipie
@@ -44,7 +44,7 @@ chown --recursive artipie:artipie %{_var}/artipie
 chown --recursive artipie:artipie %{_var}/cache/artipie
 
 %changelog
-* Sun Mar 12 2023 Ilya Vassilevsky <vassilevsky@gmail.com> - 0.28.0-5
+* Sun Mar 12 2023 Ilya Vassilevsky <vassilevsky@gmail.com> - 0.28.0-6
 - Moved SystemD unit file to /usr/lib
 
 * Sun Mar 5 2023 Ilya Vassilevsky <vassilevsky@gmail.com> - 0.28.0-4
